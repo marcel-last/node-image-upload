@@ -1,7 +1,7 @@
 {
-  "name": "picturino",
+  "name": "node-image-upload",
   "version": "1.0.0",
-  "description": "Some image application",
+  "description": "Basic image upload application",
   "main": "index.js",
   "scripts": {
     "start": "npm server.js",

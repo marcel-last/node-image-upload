@@ -62,7 +62,7 @@ app.post('/uploads', (req, res) => {
                 res.render('index', {
                     msg: 'Error: no file selected.'
                 });
-                console.log("==> INFO [" + today.format() + "] POST EVENT ('/uploads') - REMOTE SOURCE: " + req.socket.remoteAddress);
+                console.log("==> [" + today.format() + "] - INFO - POST EVENT - ('/uploads') - REMOTE SOURCE: " + req.socket.remoteAddress);
                 console.log('{\n  undefined\n}')
                 console.log("Most likely result is that remote source tried to upload nothing.")
             } else {
@@ -70,7 +70,7 @@ app.post('/uploads', (req, res) => {
                     msg: 'Success: File uploaded.',
                     file: `uploads/${req.file.filename}`,
                 });
-                console.log("==> INFO [" + today.format() + "] POST EVENT - ('/uploads') REMOTE SOURCE: " + req.socket.remoteAddress);
+                console.log("==> [" + today.format() + "] - INFO - POST EVENT - ('/uploads') REMOTE SOURCE: " + req.socket.remoteAddress);
                 console.log(req.file);
             }
         }
@@ -80,5 +80,5 @@ app.post('/uploads', (req, res) => {
 const port = process.env.PORT || "3000";
 
 app.listen(port, () => {
-    console.log(`==> INFO [` + today.format() + `] SERVER EVENT - Server is listening to requests on http://localhost:${port}...`);
+    console.log(`==> [` + today.format() + `] - INFO - SERVER EVENT - Server is listening to requests on http://localhost:${port}...`);
 });

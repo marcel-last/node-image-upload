@@ -15,22 +15,31 @@
 <body>
     <div class="container">
         <h1>Image Upload</h1>
-        <%= typeof msg != 'undefined' ? msg : '' %>
-        <p><b>Note:</b> Maximuim file size allowed is 10 Megabytes </p>
-        <form action="/uploads" method="POST" enctype="multipart/form-data">
-            <div class="file-field input-field">
-                <div class="btn grey">
-                    <span>Browse Image</span>
-                    <input name="imageUpload" type="file">
+        <%= typeof msg !='undefined' ? msg : '' %>
+            <p><b>Note:</b> Maximuim file size allowed is 10 Megabytes.</p>
+            <form action="/uploads" method="POST" enctype="multipart/form-data">
+                <div class="file-field input-field">
+                    <div class="btn grey">
+                        <span>Browse Image</span>
+                        <input name="imageUpload" type="file">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                    </div>
                 </div>
-                <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text">
+                <button type="submit" class="btn">Upload Image</button>
+            </form>
+            <br>
+            <br>
+            <br>
+                <% if (typeof file !='undefined' ) { %>
+                <div>
+                    <h1>Your Image</h1>
+                    <img src="<%= typeof file != 'undefined' ? file : '' %>" class="responsive-img">
                 </div>
-            </div>
-        <button type="submit" class="btn">Upload Image</button>
-        </form>
-        <br>
-        <img src="<%= typeof file != 'undefined' ? file : '' %>" class="responsive-img">
+                <br>
+                <button type="submit" class="btn red darken-1" onclick="location.href='/'">Reset</button>
+                <% } %>
     </div>
 </body>
 

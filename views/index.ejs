@@ -13,14 +13,14 @@
 </head>
 
 <body>
-    <div class="contianer">
+    <div class="container">
         <h1>Image Upload</h1>
         <%= typeof msg != 'undefined' ? msg : '' %>
         <p><b>Note:</b> Maximuim file size allowed is 10 Megabytes </p>
         <form action="/uploads" method="POST" enctype="multipart/form-data">
             <div class="file-field input-field">
                 <div class="btn grey">
-                    <span>File</span>
+                    <span>Browse Image</span>
                     <input name="imageUpload" type="file">
                 </div>
                 <div class="file-path-wrapper">

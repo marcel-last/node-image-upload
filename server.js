@@ -2,6 +2,9 @@ const express = require('express');
 const multer = require('multer');
 const ejs = require('ejs');
 const path = require('path');
+const dayjs = require('dayjs');
+
+let today = dayjs();
 
 // Set storage engine
 const storage = multer.diskStorage({
@@ -32,7 +35,7 @@ function checkFileType(file, callback) {
     if (mimetype && extname) {
         return callback(null, true);
     } else {
-        callback('Error: Uploaded file must be an image.');
+        callback('Error: uploaded file must be an image.');
     }
 }
 
@@ -57,14 +60,17 @@ app.post('/uploads', (req, res) => {
         } else {
             if (req.file == undefined) {
                 res.render('index', {
-                    msg: 'Error: No file selected.'
+                    msg: 'Error: no file selected.'
                 });
+                console.log("==> INFO [" + today.format() + "] POST EVENT ('/uploads') - REMOTE SOURCE: " + req.socket.remoteAddress);
+                console.log('{\n  undefined\n}')
+                console.log("Most likely result is that remote source tried to upload nothing.")
             } else {
                 res.render('index', {
                     msg: 'Success: File uploaded.',
                     file: `uploads/${req.file.filename}`,
                 });
-                console.log("==> POST EVENT:");
+                console.log("==> INFO [" + today.format() + "] POST EVENT - ('/uploads') REMOTE SOURCE: " + req.socket.remoteAddress);
                 console.log(req.file);
             }
         }
@@ -74,5 +80,5 @@ app.post('/uploads', (req, res) => {
 const port = process.env.PORT || "3000";
 
 app.listen(port, () => {
-    console.log(`Server is listening to requests on http://localhost:${port}...`);
+    console.log(`==> INFO [` + today.format() + `] SERVER EVENT - Server is listening to requests on http://localhost:${port}...`);
 });
